@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - The Leaders Newspaper</title>
+    
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="styles/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="styles/font/material-icons.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="styles/FA5/fa5/css/all.min.css">
+    <!-- Auth CSS -->
+    <link rel="stylesheet" href="styles/auth.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="auth-background">
+        <div class="auth-overlay"></div>
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+    </div>
+
+    <div class="auth-container">
+        <div class="row">
+            <div class="col s12 m8 offset-m2 l6 offset-l3">
+                <!-- Logo/Branding -->
+                <div class="auth-brand center-align">
+                    <a href="index.html" class="brand-logo">THE <span>LEADERS</span></a>
+                    <p class="brand-tagline">Join our community of informed readers</p>
+                </div>
+
+                <!-- Signup Card -->
+                <div class="auth-card card">
+                    <div class="card-content">
+                        <div class="auth-header">
+                            <h4 class="auth-title">Create Account</h4>
+                            <p class="auth-subtitle">Start your journey with The Leaders</p>
+                        </div>
+
+                        <!-- Signup Form -->
+                        <form id="signupForm" class="auth-form">
+                            <!-- Name Field -->
+                            <div class="input-field">
+                                <i class="fas fa-user prefix"></i>
+                                <input id="name" type="text" class="validate" required>
+                                <label for="name">Full Name</label>
+                            </div>
+
+                            <!-- Email Field -->
+                            <div class="input-field">
+                                <i class="fas fa-envelope prefix"></i>
+                                <input id="email" type="email" class="validate" required>
+                                <label for="email">Email Address</label>
+                                <span class="helper-text" data-error="Invalid email" data-success="Valid"></span>
+                            </div>
+
+                            <!-- Password Field -->
+                            <div class="input-field">
+                                <i class="fas fa-lock prefix"></i>
+                                <input id="password" type="password" class="validate" required minlength="6">
+                                <label for="password">Password</label>
+                                <span class="helper-text" data-error="Min 6 characters"></span>
+                                <button type="button" class="password-toggle" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+
+                            <!-- Confirm Password Field -->
+                            <div class="input-field">
+                                <i class="fas fa-lock prefix"></i>
+                                <input id="confirmPassword" type="password" class="validate" required minlength="6">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <span class="helper-text" id="passwordMatchMsg"></span>
+                            </div>
+
+                            <!-- Account Type -->
+                            <div class="account-type">
+                                <label>Account Type</label>
+                                <p>
+                                    <label>
+                                        <input name="accountType" type="radio" value="reader" checked />
+                                        <span><i class="fas fa-user-reader"></i> Reader (View articles only)</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="accountType" type="radio" value="admin" />
+                                        <span><i class="fas fa-crown"></i> Admin (Full access - Demo only)</span>
+                                    </label>
+                                </p>
+                            </div>
+
+                            <!-- Terms Agreement -->
+                            <p>
+                                <label>
+                                    <input type="checkbox" id="terms" required />
+                                    <span>I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a></span>
+                                </label>
+                            </p>
+
+                            <!-- Error Message -->
+                            <div class="auth-error red-text center" id="signupError" style="display: none;"></div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn-large waves-effect waves-light auth-btn" id="signupBtn">
+                                <span class="btn-text">Create Account</span>
+                                <div class="btn-loader" style="display: none;">
+                                    <div class="preloader-wrapper small active">
+                                        <div class="spinner-layer spinner-red-only">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div><div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div><div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <!-- Login Link -->
+                            <div class="auth-footer center">
+                                <p>Already have an account? <a href="login.html" class="auth-link">Sign In</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Back to Home -->
+                <div class="center back-home">
+                    <a href="index.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content center">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h5 class="velvet-red-text">Account Created!</h5>
+            <p>Your account has been successfully created.</p>
+            <p class="grey-text">You can now log in with your credentials.</p>
+        </div>
+        <div class="modal-footer">
+            <a href="login.html" class="btn velvet-red">Go to Login</a>
+        </div>
+    </div>
+
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/materialize.min.js"></script>
+    <script src="scripts/auth.js"></script>
+</body>
+</html>

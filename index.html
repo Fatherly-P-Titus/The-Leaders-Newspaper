@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Leaders Newspaper - Informing Leaders, Shaping Tomorrow</title>
+    
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="styles/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="styles/font/material-icons.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="styles/FA5/fa5/css/all.min.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" type="text/css" href="scripts/Slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="scripts/Slick/slick-theme.css"/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/landing.css">
+</head>
+<body>
+
+    <!-- HERO SECTION (Full-screen hero with overlay) -->
+    <section class="hero-section" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <div class="row">
+                <div class="col s12 m10 offset-m1 l8 offset-l2 center-align">
+                    <div class="hero-badge">EST. 2005</div>
+                    <h1 class="hero-title">THE LEADERS <span>NEWSPAPER</span></h1>
+                    <div class="hero-divider"></div>
+                    <p class="hero-subtitle">Informing Leaders, Shaping Tomorrow — Since 2005</p>
+                    <div class="hero-cta">
+                        <a href="#articles" class="btn-large velvet-red waves-effect waves-light">
+                            <i class="fas fa-newspaper left"></i>Read Latest News
+                        </a>
+                        <a href="#subscribe" class="btn-large white black-text waves-effect">
+                            <i class="fas fa-bell left"></i>Subscribe
+                        </a>
+                    </div>
+                    <div class="hero-scroll">
+                        <a href="#navigation" class="scroll-down">
+                            <span class="mouse">
+                                <span class="wheel"></span>
+                            </span>
+                            <span class="scroll-text">Scroll</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NAVIGATION SECTION (Sticky navigation) -->
+    <section id="navigation">
+        <nav class="nav-bar velvet-red" id="mainNav">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#home" class="brand-logo">THE LEADERS</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+                    
+                    <!-- Desktop Menu -->
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#articles">Articles</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#poster">Magazine</a></li>
+                        <li><a href="#subscribe">Subscribe</a></li>
+                        <li><a href="admin-dashboard.html" class="admin-link"><i class="fas fa-user-circle"></i> Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <ul class="sidenav" id="mobile-demo">
+            <li class="sidenav-header">
+                <div class="logo">THE LEADERS</div>
+                <p class="sidenav-sub">Navigation Menu</p>
+            </li>
+            <li><a href="#home"><i class="fas fa-home left"></i>Home</a></li>
+            <li><a href="#articles"><i class="fas fa-newspaper left"></i>Articles</a></li>
+            <li><a href="#categories"><i class="fas fa-tags left"></i>Categories</a></li>
+            <li><a href="#poster"><i class="fas fa-book-open left"></i>Magazine</a></li>
+            <li><a href="#subscribe"><i class="fas fa-bell left"></i>Subscribe</a></li>
+            <li class="divider"></li>
+            <li><a href="admin-dashboard.html" class="admin-link"><i class="fas fa-user-circle left"></i>Admin Panel</a></li>
+        </ul>
+    </section>
+
+    <!-- BREAKING NEWS TICKER -->
+    <div class="breaking-news-wrapper">
+        <div class="container">
+            <div class="breaking-news-container">
+                <div class="breaking-label">
+                    <i class="fas fa-bolt"></i> BREAKING
+                </div>
+                <div class="breaking-ticker">
+                    <marquee behavior="scroll" direction="left" scrollamount="5" onmouseover="this.stop()" onmouseout="this.start()">
+                        <span class="ticker-item">• Global Summit Concludes with Historic Climate Agreement</span>
+                        <span class="ticker-item">• Tech Giants Unveil Revolutionary AI Systems</span>
+                        <span class="ticker-item">• Market Volatility Continues Amid Economic Uncertainty</span>
+                        <span class="ticker-item">• Cultural Renaissance Sweeps European Capitals</span>
+                        <span class="ticker-item">• New Healthcare Legislation Proposed</span>
+                    </marquee>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PUBLISHED ARTICLES AREA -->
+    <section id="articles" class="section-padding">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <h2 class="section-title">Published <span>Articles</span></h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">The latest news and analysis from our editorial team</p>
+            </div>
+
+            <!-- Featured Article (Latest) -->
+            <div class="featured-article card" id="featuredArticle">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="category-tabs">
+                <ul class="tabs">
+                    <li class="tab"><a href="#all" class="active">All</a></li>
+                    <li class="tab"><a href="#politics">Politics</a></li>
+                    <li class="tab"><a href="#business">Business</a></li>
+                    <li class="tab"><a href="#technology">Technology</a></li>
+                    <li class="tab"><a href="#culture">Culture</a></li>
+                </ul>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="row" id="articlesGrid">
+                <!-- Articles will be loaded here dynamically -->
+            </div>
+
+            <!-- View All Button -->
+            <div class="center-align view-all-btn">
+                <a href="read-articles.html" class="btn-large velvet-red waves-effect waves-light">
+                    <i class="fas fa-book-open left"></i>Read All Articles
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- POSTER / CTA SECTION (Magazine Cover Style) -->
+    <section id="poster" class="poster-section">
+        <div class="container-fluid">
+            <div class="row poster-row">
+                <!-- Left side - Magazine Cover -->
+                <div class="col s12 m6 poster-left">
+                    <div class="magazine-cover">
+                        <div class="cover-badge">SPECIAL EDITION</div>
+                        <img src="assets/posters/magazine-cover-1.png" alt="The Leaders Magazine" class="responsive-img" id="magazineCover">
+                        <div class="cover-overlay">
+                            <div class="cover-text">
+                                <h3>FEBRUARY 2026</h3>
+                                <p>The Future of Global Leadership</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right side - CTA Content -->
+                <div class="col s12 m6 poster-right">
+                    <div class="poster-content-wrapper">
+                        <span class="poster-subtitle">THIS MONTH'S HIGHLIGHTS</span>
+                        <h2 class="poster-title">The Leadership <span>Edition</span></h2>
+                        <div class="poster-divider"></div>
+                        
+                        <ul class="poster-highlights">
+                            <li><i class="fas fa-check-circle"></i> Exclusive Interview with World Leaders</li>
+                            <li><i class="fas fa-check-circle"></i> The Future of Global Economy</li>
+                            <li><i class="fas fa-check-circle"></i> Technology Trends Shaping 2026</li>
+                            <li><i class="fas fa-check-circle"></i> Climate Change: A Call to Action</li>
+                            <li><i class="fas fa-check-circle"></i> Cultural Renaissance in Europe</li>
+                        </ul>
+                        
+                        <div class="poster-cta">
+                            <p class="poster-price">Special Launch Offer</p>
+                            <div class="price-tag">
+                                <span class="old-price">$9.99</span>
+                                <span class="new-price">FREE</span>
+                            </div>
+                            <a href="#subscribe" class="btn-large white black-text waves-effect">
+                                <i class="fas fa-download left"></i>Download Digital Copy
+                            </a>
+                            <p class="poster-note">Limited time offer for new subscribers</p>
+                        </div>
+                        
+                        <!-- Poster Navigation -->
+                        <div class="poster-nav">
+                            <button class="btn-floating btn-small velvet-red prev-poster">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <span class="poster-counter">1 / 3</span>
+                            <button class="btn-floating btn-small velvet-red next-poster">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUBSCRIBE SECTION -->
+    <section id="subscribe" class="subscribe-section">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m10 offset-m1 l8 offset-l2">
+                    <div class="subscribe-card">
+                        <div class="card-content">
+                            <div class="subscribe-badge">LIMITED OFFER</div>
+                            <h3 class="subscribe-title">Join Our Community of <span>Informed Readers</span></h3>
+                            <p class="subscribe-text">Get unlimited access to premium articles, exclusive interviews, and in-depth analysis from our expert journalists.</p>
+                            
+                            <div class="subscribe-features">
+                                <div class="row">
+                                    <div class="col s6">
+                                        <p><i class="fas fa-check-circle"></i> Daily newsletter</p>
+                                        <p><i class="fas fa-check-circle"></i> Premium articles</p>
+                                    </div>
+                                    <div class="col s6">
+                                        <p><i class="fas fa-check-circle"></i> Ad-free reading</p>
+                                        <p><i class="fas fa-check-circle"></i> E-magazine access</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <form class="subscribe-form" id="subscribeForm">
+                                <div class="input-field">
+                                    <i class="fas fa-envelope prefix"></i>
+                                    <input id="email" type="email" class="validate" required>
+                                    <label for="email">Enter your email address</label>
+                                </div>
+                                <button type="submit" class="btn-large white black-text waves-effect">
+                                    Subscribe Now <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </form>
+                            
+                            <p class="subscribe-note"><i class="fas fa-shield-alt"></i> No spam, unsubscribe anytime.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer-section">
+        <div class="container">
+            <!-- Footer Top -->
+            <div class="row footer-top">
+                <div class="col s12 m4">
+                    <div class="footer-logo">
+                        <h4>THE <span>LEADERS</span></h4>
+                        <p>Informing Leaders, Shaping Tomorrow — Since 2026</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col s12 m2">
+                    <h5>Categories</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Politics</a></li>
+                        <li><a href="#">Business</a></li>
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Culture</a></li>
+                        <li><a href="#">Opinion</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col s12 m2">
+                    <h5>Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col s12 m2">
+                    <h5>Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Subscription</a></li>
+                        <li><a href="#">Newsletters</a></li>
+                        <li><a href="#">Digital Access</a></li>
+                        <li><a href="#">Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col s12 m2">
+                    <h5>Legal</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="row footer-bottom">
+                <div class="col s12 center-align">
+                    <p>&copy; 2005 - 2026 The Leaders Newspaper. All rights reserved. Designed by Fatherly P. Titus</p>
+                    <p class="footer-credit">
+                        <i class="fas fa-heart" style="color: #8B0000;"></i> 
+                        Committed to Truth, Integrity, and Excellence
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <a href="#home" class="btn-floating btn-large velvet-red">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/materialize.min.js"></script>
+    <script type="text/javascript" src="scripts/Slick/slick.min.js"></script>
+    <script src="scripts/article-storage.js"></script>
+    <script src="scripts/landing.js"></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Articles - The Leaders Newspaper</title>
+    
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="styles/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="styles/font/micons.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="styles/FA5/fa5/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/read-articles.css">
+    <!-- Comments CSS -->
+    <link rel="stylesheet" href="styles/comments.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="velvet-red">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">THE LEADERS</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="index.html"><i class="fas fa-home left"></i>Home</a></li>
+                <li class="active"><a href="read-articles.html"><i class="fas fa-book-open left"></i>Read</a></li>
+                <li><a href="#" id="userMenu" class="dropdown-trigger" data-target="userDropdown">
+                    <i class="fas fa-user-circle"></i> <span id="userName">Account</span>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- User Dropdown -->
+    <ul id="userDropdown" class="dropdown-content">
+        <li><a href="#!" id="profileLink"><i class="fas fa-user"></i> Profile</a></li>
+        <li class="divider"></li>
+        <li><a href="#!" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+
+    <div class="container">
+        <!-- Header with article counter and engagement stats -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col s12 m6">
+                    <h4 class="velvet-red-text">Read Articles</h4>
+                    <div class="divider velvet-red"></div>
+                </div>
+                <div class="col s12 m6 right-align">
+                    <div class="article-counter card-panel grey lighten-4">
+                        <span class="counter-value" id="currentArticleNum">1</span>
+                        <span class="counter-separator">/</span>
+                        <span class="counter-total" id="totalArticles">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="center" style="display: none;">
+            <i class="fas fa-book-open fa-5x" style="color: var(--velvet-red-light); opacity: 0.5;"></i>
+            <h5>No Articles to Read</h5>
+            <p>Create some articles first to start reading</p>
+            <a href="create-article.html" class="btn velvet-red">
+                <i class="fas fa-plus-circle left"></i>Create Article
+            </a>
+        </div>
+
+        <!-- Article Reader -->
+        <div id="articleReader" class="article-reader card">
+            <!-- Article Header with Engagement Bar -->
+            <div class="article-header">
+                <div class="engagement-bar">
+                    <button class="engagement-btn like-btn" id="likeArticleBtn">
+                        <i class="far fa-heart"></i>
+                        <span id="likeCount">0</span>
+                        <span class="btn-text">Likes</span>
+                    </button>
+                    <button class="engagement-btn comment-btn" id="openCommentsBtn">
+                        <i class="far fa-comment"></i>
+                        <span id="commentCount">0</span>
+                        <span class="btn-text">Comments</span>
+                    </button>
+                    <button class="engagement-btn share-btn" id="shareArticleBtn">
+                        <i class="far fa-share-square"></i>
+                        <span class="btn-text">Share</span>
+                    </button>
+                </div>
+                
+                <h1 id="articleTitle" class="article-title">Loading...</h1>
+                <h2 id="articleSubtitle" class="article-subtitle"></h2>
+                
+                <div class="article-meta">
+                    <span id="articleAuthor"><i class="fas fa-user-circle"></i> </span>
+                    <span id="articleDate"><i class="fas fa-calendar-alt"></i> </span>
+                    <span id="articleLayout" class="layout-badge"></span>
+                </div>
+            </div>
+
+            <!-- Article Content with 3-Row Layout -->
+            <div class="article-content" id="articleContent">
+                <div class="preview-grid">
+                    <!-- Row 1: Heading (already handled above) -->
+                    
+                    <!-- Row 2: Poster Section -->
+                    <div class="poster-section" id="posterSection"></div>
+                    
+                    <!-- Row 3: Text Section -->
+                    <div class="text-section" id="textSection"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="navigation-controls">
+            <div class="row">
+                <div class="col s6">
+                    <button id="prevBtn" class="btn-large waves-effect waves-light velvet-red prev-btn" disabled>
+                        <i class="fas fa-chevron-left left"></i>Previous
+                    </button>
+                </div>
+                <div class="col s6 right-align">
+                    <button id="nextBtn" class="btn-large waves-effect waves-light velvet-red next-btn" disabled>
+                        Next<i class="fas fa-chevron-right right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress grey lighten-2">
+                    <div id="readingProgress" class="determinate velvet-red" style="width: 0%"></div>
+                </div>
+                <div class="reading-position center-align" id="readingPosition">
+                    Article 1 of 0
+                </div>
+            </div>
+        </div>
+
+        <!-- Keyboard Shortcuts Hint -->
+        <div class="keyboard-hint center-align grey-text">
+            <small><i class="fas fa-keyboard"></i> Use ← → arrows to navigate</small>
+        </div>
+    </div>
+
+    <!-- COMMENTS MODAL -->
+    <div id="commentsModal" class="modal modal-fixed-footer comments-modal">
+        <div class="modal-header">
+            <div class="row" style="margin-bottom: 0;">
+                <div class="col s6">
+                    <h5 class="velvet-red-text">
+                        <i class="fas fa-comments left"></i>Discussion
+                    </h5>
+                </div>
+                <div class="col s6 right-align">
+                    <span class="comment-count-badge" id="modalCommentCount">0 Comments</span>
+                </div>
+            </div>
+            <div class="divider velvet-red"></div>
+        </div>
+
+        <div class="modal-content">
+            <!-- Login Prompt for non-logged in users -->
+            <div id="loginPrompt" class="login-prompt card-panel grey lighten-4" style="display: none;">
+                <i class="fas fa-lock fa-2x"></i>
+                <p>Please <a href="login.html">log in</a> to join the discussion</p>
+            </div>
+
+            <!-- Comment Form (visible only to logged-in users) -->
+            <div id="commentFormContainer" class="comment-form-container">
+                <div class="comment-form">
+                    <div class="user-avatar-small" id="currentUserAvatar">U</div>
+                    <div class="form-input">
+                        <textarea id="commentInput" placeholder="Share your thoughts..." rows="2"></textarea>
+                        <button class="btn-flat send-btn" id="postCommentBtn">
+                            <i class="fas fa-paper-plane"></i> Post
+                        </button>
+                    </div>
+                </div>
+                <!-- Reply Indicator -->
+                <div id="replyIndicator" class="reply-indicator" style="display: none;">
+                    <i class="fas fa-reply"></i> Replying to <span id="replyToName">User</span>
+                    <button class="btn-flat btn-small" id="cancelReplyBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="comments-section" id="commentsSection">
+                <!-- Comments will be loaded here dynamically -->
+                <div class="center loading-comments">
+                    <div class="preloader-wrapper small active">
+                        <div class="spinner-layer spinner-red-only">
+                            <div class="circle-clipper left"><div class="circle"></div></div>
+                            <div class="gap-patch"><div class="circle"></div></div>
+                            <div class="circle-clipper right"><div class="circle"></div></div>
+                        </div>
+                    </div>
+                    <p>Loading comments...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <span class="comment-count-total" id="footerCommentCount">0 comments</span>
+            <a href="#!" class="modal-close btn-flat">Close</a>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal share-modal">
+        <div class="modal-content center">
+            <i class="fas fa-share-alt share-icon"></i>
+            <h5 class="velvet-red-text">Share this Article</h5>
+            <div class="share-options">
+                <a href="#" class="share-option" id="shareTwitter">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="#" class="share-option" id="shareFacebook">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="share-option" id="shareLinkedin">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="#" class="share-option" id="shareEmail">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+            </div>
+            <div class="share-link">
+                <input type="text" id="shareUrl" readonly value="https://leaders.com/article/123">
+                <button class="btn-flat" id="copyLinkBtn">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close btn-flat">Close</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/materialize.min.js"></script>
+    <script src="scripts/article-storage.js"></script>
+    <script src="scripts/comments-storage.js"></script>
+    <script src="scripts/read-articles.js"></script>
+    <script src="scripts/auth-check.js"></script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Hub - The Leaders Newspaper</title>
+    
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="styles/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="styles/font/material-icons.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="styles/FA5/fa5/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/admin-hub.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="velvet-red">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">THE LEADERS NEWSPAPER</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+            
+            <!-- Desktop Navigation -->
+            <ul class="right hide-on-med-and-down">
+                <!-- li class="active"><a href="admin-hub.html"><i class="fas fa-th-large left"></i>Hub</a></!-li -->
+                <li><a href="create-article.html"><i class="fas fa-plus-circle left"></i>Create</a></li>
+                <li><a href="created-articles.html"><i class="fas fa-newspaper left"></i>Articles</a></li>
+                <li><a href="read-articles.html"><i class="fas fa-book-open left"></i>Reader View</a></li>
+                <li><a href="#" id="userMenu" class="dropdown-trigger" data-target="userDropdown">
+                    <i class="fas fa-user-circle"></i> Admin
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- User Dropdown -->
+    <ul id="userDropdown" class="dropdown-content">
+        <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+        <li class="divider"></li>
+        <li><a href="#!" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+
+    <!-- Mobile Sidenav -->
+    <ul class="sidenav" id="mobile-demo">
+        <li class="sidenav-header">
+            <div class="logo">THE LEADERS</div>
+            <p class="sidenav-sub">Navigation Hub</p>
+        </li>
+        <li class="active"><a href="admin-hub.html"><i class="fas fa-th-large left"></i>Hub</a></li>
+        <li><a href="admin-dashboard.html"><i class="fas fa-tachometer-alt left"></i>Dashboard</a></li>
+        <li><a href="create-article.html"><i class="fas fa-plus-circle left"></i>Create Article</a></li>
+        <li><a href="created-articles.html"><i class="fas fa-newspaper left"></i>My Articles</a></li>
+        <li><a href="read-articles.html"><i class="fas fa-book-open left"></i>Reader View</a></li>
+        <li><a href="categories.html"><i class="fas fa-tags left"></i>Categories</a></li>
+        <li><a href="comments-moderation.html"><i class="fas fa-comments left"></i>Comments</a></li>
+        <li><a href="analytics.html"><i class="fas fa-chart-line left"></i>Analytics</a></li>
+        <li><a href="users.html"><i class="fas fa-users left"></i>Users</a></li>
+        <li><a href="settings.html"><i class="fas fa-cog left"></i>Settings</a></li>
+        <li class="divider"></li>
+        <li><a href="#!" onclick="logout()"><i class="fas fa-sign-out-alt left"></i>Logout</a></li>
+    </ul>
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <!-- Welcome Banner -->
+        <div class="welcome-banner">
+            <div class="row">
+                <div class="col s12 m8">
+                    <h1 class="welcome-title">Welcome back, <span id="adminName">Admin</span>!</h1>
+                    <p class="welcome-subtitle">Manage your newspaper from one central hub</p>
+                </div>
+                <div class="col s12 m4 right-align">
+                    <div class="date-display" id="currentDateTime"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="row stats-row">
+            <div class="col s12 m6 l3">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-value" id="totalArticles">0</span>
+                        <span class="stat-label">Total Articles</span>
+                        <span class="stat-change positive" id="articlesChange">+2 this week</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l3">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-value" id="totalUsers">0</span>
+                        <span class="stat-label">Total Users</span>
+                        <span class="stat-change positive" id="usersChange">+12 this week</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l3">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-value" id="totalComments">0</span>
+                        <span class="stat-label">Comments</span>
+                        <span class="stat-change" id="commentsChange">+8 this week</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l3">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="stat-details">
+                        <span class="stat-value" id="totalViews">0</span>
+                        <span class="stat-label">Total Views</span>
+                        <span class="stat-change positive" id="viewsChange">+1.2k this week</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions Grid -->
+        <div class="section-header">
+            <h2 class="section-title">Quick Actions</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="row quick-actions-grid">
+            <div class="col s12 m6 l4 xl3">
+                <a href="create-article.html" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3 class="action-title">Write Article</h3>
+                    <p class="action-desc">Create a new newspaper article</p>
+                    <span class="action-link">Start writing <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="col s12 m6 l4 xl3">
+                <a href="created-articles.html" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="action-title">Manage Articles</h3>
+                    <p class="action-desc">Edit, delete or view all articles</p>
+                    <span class="action-link">Go to articles <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="col s12 m6 l4 xl3">
+                <a href="categories.html" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3 class="action-title">Categories</h3>
+                    <p class="action-desc">Manage article categories</p>
+                    <span class="action-link">Organize <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="col s12 m6 l4 xl3">
+                <a href="comments-moderation.html" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="action-title">Comments</h3>
+                    <p class="action-desc">Moderate reader comments</p>
+                    <span class="action-link">Review <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="col s12 m6 l4 xl3">
+                <a href="users.html" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3 class="action-title">Users</h3>
+                    <p class="action-desc">Manage readers and authors</p>
+                    <span class="action-link">View all <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="col s12 m6 l4 xl3">
+                <a href="analytics.html" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="action-title">Analytics</h3>
+                    <p class="action-desc">View performance metrics</p>
+                    <span class="action-link">See stats <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="col s12 m6 l4 xl3">
+                <a href="media-library.html" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3 class="action-title">Media Library</h3>
+                    <p class="action-desc">Manage images and assets</p>
+                    <span class="action-link">Browse <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="col s12 m6 l4 xl3">
+                <a href="settings.html" class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3 class="action-title">Settings</h3>
+                    <p class="action-desc">Configure newspaper settings</p>
+                    <span class="action-link">Adjust <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="row">
+            <!-- Recent Articles -->
+            <div class="col s12 l8">
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-clock"></i> Recent Articles</h3>
+                        <a href="created-articles.html" class="view-all-link">View all <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="card-content">
+                        <table class="recent-articles-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Category</th>
+                                    <th>Published</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentArticlesBody">
+                                <!-- Loaded dynamically -->
+                                <tr>
+                                    <td colspan="6" class="center">Loading articles...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="col s12 l4">
+                <!-- Pending Comments -->
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-clock"></i> Pending Comments</h3>
+                        <a href="comments-moderation.html" class="view-all-link">Moderate</a>
+                    </div>
+                    <div class="card-content">
+                        <div id="pendingCommentsList">
+                            <!-- Loaded dynamically -->
+                            <div class="center grey-text">No pending comments</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Draft Articles -->
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-pen"></i> Drafts</h3>
+                        <a href="created-articles.html?filter=drafts" class="view-all-link">View all</a>
+                    </div>
+                    <div class="card-content">
+                        <div id="draftsList">
+                            <!-- Loaded dynamically -->
+                            <div class="center grey-text">No draft articles</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-link"></i> Quick Links</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul class="quick-links">
+                            <li><a href="index.html" target="_blank"><i class="fas fa-globe"></i> View Live Site</a></li>
+                            <li><a href="read-articles.html" target="_blank"><i class="fas fa-book-open"></i> Reader View</a></li>
+                            <li><a href="profile.html"><i class="fas fa-user"></i> Edit Profile</a></li>
+                            <li><a href="help.html"><i class="fas fa-question-circle"></i> Help & Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Status -->
+        <div class="row">
+            <div class="col s12">
+                <div class="section-card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-heartbeat"></i> System Status</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col s12 m6 l3">
+                                <div class="status-item">
+                                    <span class="status-label">Database</span>
+                                    <span class="status-value status-online"><i class="fas fa-check-circle"></i> Connected</span>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3">
+                                <div class="status-item">
+                                    <span class="status-label">Storage</span>
+                                    <span class="status-value status-online"><i class="fas fa-check-circle"></i> 45% used</span>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3">
+                                <div class="status-item">
+                                    <span class="status-label">API</span>
+                                    <span class="status-value status-online"><i class="fas fa-check-circle"></i> Operational</span>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3">
+                                <div class="status-item">
+                                    <span class="status-label">Last Backup</span>
+                                    <span class="status-value"><i class="fas fa-clock"></i> 2 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large velvet-red">
+            <i class="fas fa-plus"></i>
+        </a>
+        <ul>
+            <li><a href="create-article.html" class="btn-floating green"><i class="fas fa-pen"></i></a></li>
+            <li><a href="upload-media.html" class="btn-floating blue"><i class="fas fa-image"></i></a></li>
+            <li><a href="invite-user.html" class="btn-floating yellow darken-1"><i class="fas fa-user-plus"></i></a></li>
+        </ul>
+    </div>
+
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/materialize.min.js"></script>
+    <script src="scripts/article-storage.js"></script>
+    <script src="scripts/comments-storage.js"></script>
+    <script src="scripts/admin-hub.js"></script>
+    <script src="scripts/auth-check.js"></script>
+</body>
+</html>
+
+
+
+

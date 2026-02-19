@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - The Leaders Newspaper</title>
+    
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="styles/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="styles/font/material-icons.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="styles/FA5/fa5/css/all.min.css">
+    <!-- Auth CSS -->
+    <link rel="stylesheet" href="styles/auth.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="auth-background">
+        <div class="auth-overlay"></div>
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+    </div>
+
+    <div class="auth-container">
+        <div class="row">
+            <div class="col s12 m8 offset-m2 l6 offset-l3">
+                <!-- Logo/Branding -->
+                <div class="auth-brand center-align">
+                    <a href="index.html" class="brand-logo">THE <span>LEADERS</span></a>
+                    <p class="brand-tagline">Informing Leaders, Shaping Tomorrow</p>
+                </div>
+
+                <!-- Login Card -->
+                <div class="auth-card card">
+                    <div class="card-content">
+                        <div class="auth-header">
+                            <h4 class="auth-title">Welcome Back</h4>
+                            <p class="auth-subtitle">Sign in to continue to your account</p>
+                        </div>
+
+                        <!-- Login Form -->
+                        <form id="loginForm" class="auth-form">
+                            <!-- Email Field -->
+                            <div class="input-field">
+                                <i class="fas fa-envelope prefix"></i>
+                                <input id="email" type="email" class="validate" required>
+                                <label for="email">Email Address</label>
+                                <span class="helper-text" data-error="Invalid email" data-success="Valid"></span>
+                            </div>
+
+                            <!-- Password Field -->
+                            <div class="input-field">
+                                <i class="fas fa-lock prefix"></i>
+                                <input id="password" type="password" class="validate" required minlength="6">
+                                <label for="password">Password</label>
+                                <span class="helper-text" data-error="Min 6 characters"></span>
+                                <button type="button" class="password-toggle" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+
+                            <!-- Remember Me & Forgot Password -->
+                            <div class="auth-options">
+                                <label>
+                                    <input type="checkbox" id="remember" />
+                                    <span>Remember me</span>
+                                </label>
+                                <a href="#!" class="forgot-password" id="forgotPassword">Forgot Password?</a>
+                            </div>
+
+                            <!-- Error Message -->
+                            <div class="auth-error red-text center" id="loginError" style="display: none;"></div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn-large waves-effect waves-light auth-btn" id="loginBtn">
+                                <span class="btn-text">Sign In</span>
+                                <div class="btn-loader" style="display: none;">
+                                    <div class="preloader-wrapper small active">
+                                        <div class="spinner-layer spinner-red-only">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div><div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div><div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <!-- Sign Up Link -->
+                            <div class="auth-footer center">
+                                <p>Don't have an account? <a href="signup.html" class="auth-link">Sign Up</a></p>
+                            </div>
+                        </form>
+
+                        <!-- Demo Credentials -->
+                        <div class="demo-credentials">
+                            <p class="demo-title"><i class="fas fa-info-circle"></i> Demo Credentials</p>
+                            <div class="demo-grid">
+                                <div class="demo-item">
+                                    <span class="demo-role">Admin</span>
+                                    <span class="demo-email">admin@leaders.com</span>
+                                    <span class="demo-pass">password123</span>
+                                </div>
+                                <div class="demo-item">
+                                    <span class="demo-role">Reader</span>
+                                    <span class="demo-email">reader@example.com</span>
+                                    <span class="demo-pass">reader123</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back to Home -->
+                <div class="center back-home">
+                    <a href="index.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotModal" class="modal">
+        <div class="modal-content">
+            <h5 class="velvet-red-text">Reset Password</h5>
+            <div class="divider velvet-red"></div>
+            <p class="grey-text">Enter your email address and we'll send you instructions to reset your password.</p>
+            
+            <div class="input-field">
+                <i class="fas fa-envelope prefix"></i>
+                <input id="resetEmail" type="email" class="validate">
+                <label for="resetEmail">Email Address</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close btn-flat">Cancel</a>
+            <a href="#!" class="btn velvet-red" id="sendResetBtn">Send Instructions</a>
+        </div>
+    </div>
+
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/materialize.min.js"></script>
+    <script src="scripts/auth.js"></script>
+</body>
+</html>

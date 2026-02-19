@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Article - The Leaders Newspaper</title>
+    
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="styles/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="styles/font/micons.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="styles/FA5/fa5/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/create-article.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="velvet-red">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">THE LEADERS NEWSPAPER</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="index.html"><i class="hide fas fa-home left"></i>Home</a></li>
+                <li><a href="admin-dashboard.html"><i class="hide fas fa-tachometer-alt left"></i>Dashboard</a></li>
+                <li class="active"><a href="created-articles.html"><i class="fas fa-plus-circle left"></i>Create Article</a></li>
+                <li><a href="read-articles.html"><i class="fas fa-sign-out-alt left"></i>Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Article Creation Form Section -->
+            <div class="col s12 l5 form-section">
+                <div class="page-header">
+                    <h4 class="velvet-red-text">Create New Article</h4>
+                    <div class="divider velvet-red"></div>
+                </div>
+
+                <form id="articleForm" class="article-form">
+                    <!-- Image Upload -->
+                    <div class="file-field input-field">
+                        <div class="btn velvet-red lighten-1">
+                            <span><i class="fas fa-upload left"></i>Upload Image</span>
+                            <input type="file" id="articleImage" accept="image/*">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="Upload article image (max 1)">
+                        </div>
+                        <span class="helper-text" data-error="wrong" data-success="right">Image will be cropped to 250x250px for card view</span>
+                    </div>
+
+                    <!-- Image Preview -->
+                    <div class="image-preview-container center" id="imagePreview" style="display: none;">
+                        <img src="#" alt="Preview" class="responsive-img materialboxed" style="max-width: 250px; max-height: 250px;">
+                        <button type="button" class="btn-floating btn-small red" id="removeImage">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="input-field">
+                        <input id="articleTitle" type="text" class="validate" required>
+                        <label for="articleTitle">Article Title / Header</label>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="input-field">
+                        <input id="articleDate" type="text" class="datepicker" required>
+                        <label for="articleDate">Publication Date</label>
+                    </div>
+
+                    <!-- Subtitle -->
+                    <div class="input-field">
+                        <input id="articleSubtitle" type="text" class="validate">
+                        <label for="articleSubtitle">Sub-Title / Subheader</label>
+                    </div>
+
+                    <!-- Author -->
+                    <div class="input-field">
+                        <input id="articleAuthor" type="text" class="validate" required>
+                        <label for="articleAuthor">Author Name</label>
+                    </div>
+
+                    <!-- Layout Selection -->
+                    <div class="input-field">
+                        <select id="articleLayout">
+                            <option value="top-right" selected>Top-Right (Image right, text wraps)</option>
+                            <option value="top-center">Top-Center (Image above text)</option>
+                            <option value="top-left">Top-Left (Image left, text wraps)</option>
+                        </select>
+                        <label>Article Page Layout</label>
+                    </div>
+
+                    <!-- Article Styling Options -->
+                    <div class="styling-options-section">
+                        <h6 class="velvet-red-text"><i class="fas fa-palette left"></i>Article Styling Options</h6>
+                        <div class="divider thin"></div>
+                        
+                        <!-- Typography -->
+                        <div class="row">
+                            <div class="col s6">
+                                <label>Font Family</label>
+                                <select id="fontFamily" class="browser-default">
+                                    <option value="georgia">Georgia (Classic)</option>
+                                    <option value="times">Times New Roman (Traditional)</option>
+                                    <option value="garamond">Garamond (Elegant)</option>
+                                    <option value="playfair">Playfair Display (Modern)</option>
+                                    <option value="roboto">Roboto (Contemporary)</option>
+                                    <option value="opensans">Open Sans (Clean)</option>
+                                </select>
+                            </div>
+                            <div class="col s6">
+                                <label>Font Size</label>
+                                <select id="fontSize" class="browser-default">
+                                    <option value="normal">Normal</option>
+                                    <option value="large">Large</option>
+                                    <option value="larger">Larger</option>
+                                    <option value="small">Small</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Title Styles -->
+                        <div class="row">
+                            <div class="col s6">
+                                <label>Title Style</label>
+                                <select id="titleStyle" class="browser-default">
+                                    <option value="standard">Standard</option>
+                                    <option value="bold">Bold Impact</option>
+                                    <option value="elegant">Elegant (Small Caps)</option>
+                                    <option value="underlined">Underlined</option>
+                                    <option value="accent-border">Accent Border</option>
+                                </select>
+                            </div>
+                            <div class="col s6">
+                                <label>Title Alignment</label>
+                                <select id="titleAlignment" class="browser-default">
+                                    <option value="left">Left</option>
+                                    <option value="center">Center</option>
+                                    <option value="right">Right</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Text Formatting -->
+                        <div class="row">
+                            <div class="col s6">
+                                <label>Text Alignment</label>
+                                <select id="textAlignment" class="browser-default">
+                                    <option value="justify">Justified (Newspaper)</option>
+                                    <option value="left">Left Aligned</option>
+                                    <option value="right">Right Aligned</option>
+                                </select>
+                            </div>
+                            <div class="col s6">
+                                <label>Line Height</label>
+                                <select id="lineHeight" class="browser-default">
+                                    <option value="normal">Normal (1.6)</option>
+                                    <option value="relaxed">Relaxed (1.8)</option>
+                                    <option value="compact">Compact (1.4)</option>
+                                    <option value="double">Double (2.0)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Decorative Elements -->
+                        <div class="row">
+                            <div class="col s6">
+                                <label>Drop Cap (First Letter)</label>
+                                <div class="switch">
+                                    <label>
+                                        Off
+                                        <input type="checkbox" id="dropCap" checked>
+                                        <span class="lever"></span>
+                                        On
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <label>Pull Quotes</label>
+                                <div class="switch">
+                                    <label>
+                                        Off
+                                        <input type="checkbox" id="pullQuotes">
+                                        <span class="lever"></span>
+                                        On
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Border & Separator Styles -->
+                        <div class="row">
+                            <div class="col s6">
+                                <label>Title Separator</label>
+                                <select id="titleSeparator" class="browser-default">
+                                    <option value="solid">Solid Line</option>
+                                    <option value="double">Double Line</option>
+                                    <option value="dashed">Dashed</option>
+                                    <option value="dotted">Dotted</option>
+                                    <option value="gold">Gold Accent</option>
+                                    <option value="none">None</option>
+                                </select>
+                            </div>
+                            <div class="col s6">
+                                <label>Section Dividers</label>
+                                <select id="sectionDividers" class="browser-default">
+                                    <option value="none">None</option>
+                                    <option value="line">Simple Line</option>
+                                    <option value="ornament">Ornament (✦)</option>
+                                    <option value="fancy">Fancy (❧)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Color Themes -->
+                        <div class="row">
+                            <div class="col s12">
+                                <label>Color Theme</label>
+                                <div class="color-themes">
+                                    <div class="theme-option active" data-theme="velvet-red" style="background: #8B0000;" title="Velvet Red (Default)"></div>
+                                    <div class="theme-option" data-theme="navy" style="background: #003366;" title="Navy Prestige"></div>
+                                    <div class="theme-option" data-theme="forest" style="background: #2C5F2D;" title="Forest Green"></div>
+                                    <div class="theme-option" data-theme="wine" style="background: #722F37;" title="Wine Elegance"></div>
+                                    <div class="theme-option" data-theme="charcoal" style="background: #36454F;" title="Charcoal"></div>
+                                    <div class="theme-option" data-theme="classic" style="background: #000000;" title="Classic Black"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Image Styling -->
+                        <div class="row">
+                            <div class="col s6">
+                                <label>Image Style</label>
+                                <select id="imageStyle" class="browser-default">
+                                    <option value="standard">Standard</option>
+                                    <option value="shadow">Drop Shadow</option>
+                                    <option value="border">Simple Border</option>
+                                    <option value="rounded">Rounded Corners</option>
+                                    <option value="circle">Circular</option>
+                                    <option value="polaroid">Polaroid Style</option>
+                                </select>
+                            </div>
+                            <div class="col s6">
+                                <label>Image Caption</label>
+                                <input type="text" id="imageCaption" placeholder="Enter image caption (optional)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Article Content -->
+                    <div class="input-field">
+                        <textarea id="articleContent" class="materialize-textarea" data-length="500"></textarea>
+                        <label for="articleContent">Article Content</label>
+                        <span class="helper-text">Maximum 500 words</span>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn waves-effect waves-light velvet-red">
+                            <i class="fas fa-eye left"></i>Preview Article
+                        </button>
+                        <button type="reset" class="btn waves-effect waves-light grey lighten-1">
+                            <i class="fas fa-undo left"></i>Reset
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Preview Section (updated) -->
+            <div class="col s12 l7 preview-section">
+                <div class="preview-header">
+                    <h5 class="velvet-red-text">Live Preview</h5>
+                    <div class="preview-controls">
+                        <button class="btn-floating btn-small velvet-red" id="zoomIn" title="Zoom In">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                        <button class="btn-floating btn-small velvet-red" id="zoomOut" title="Zoom Out">
+                            <i class="fas fa-search-minus"></i>
+                        </button>
+                        <button class="btn-floating btn-small velvet-red" id="resetZoom" title="Reset Zoom">
+                            <i class="fas fa-undo-alt"></i>
+                        </button>
+                        <button class="btn-floating btn-small velvet-red" id="downloadImage" title="Download as Image">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <button class="btn-floating btn-small velvet-red" id="downloadPDF" title="Download as PDF">
+                            <i class="fas fa-file-pdf"></i>
+                        </button>
+                        <button class="btn-floating btn-small amber darken-1" id="downloadPDFMulti" title="Download as Multi-Page PDF">
+                            <i class="fas fa-file-pdf"></i>
+                            <span style="font-size: 8px; position: absolute; bottom: -2px;">2</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preview Container with Zoom -->
+                <div class="preview-container" id="previewContainer">
+                    <div class="preview-content" id="previewContent">
+                        <!-- Article Preview will be injected here -->
+                        <div class="article-preview">
+                            <div class="preview-message center">
+                                <i class="fas fa-newspaper fa-3x velvet-red-text" style="opacity: 0.5;"></i>
+                                <p>Fill in the form and click "Preview Article" to see your article here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Full-screen Text Editor Modal -->
+            <div id="textEditorModal" class="modal modal-fixed-footer text-editor-modal">
+                <div class="modal-header">
+                    <div class="row" style="margin-bottom: 0;">
+                        <div class="col s6">
+                            <h5 class="velvet-red-text">
+                                <i class="fas fa-pen-fancy left"></i>Article Content Editor
+                            </h5>
+                        </div>
+                        <div class="col s6 right-align">
+                            <span class="word-count-badge" id="modalWordCount">0 / 500 words</span>
+                        </div>
+                    </div>
+                    <div class="divider velvet-red"></div>
+                </div>
+                
+                <div class="modal-content">
+                    <div class="editor-toolbar">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="btn-group">
+                                    <button class="btn-floating btn-small waves-effect waves-light velvet-red tool-btn" data-format="bold" title="Bold (Ctrl+B)">
+                                        <i class="fas fa-bold"></i>
+                                    </button>
+                                    <button class="btn-floating btn-small waves-effect waves-light velvet-red tool-btn" data-format="italic" title="Italic (Ctrl+I)">
+                                        <i class="fas fa-italic"></i>
+                                    </button>
+                                    <button class="btn-floating btn-small waves-effect waves-light velvet-red tool-btn" data-format="underline" title="Underline (Ctrl+U)">
+                                        <i class="fas fa-underline"></i>
+                                    </button>
+                                    <span class="divider-vertical"></span>
+                                    <button class="btn-floating btn-small waves-effect waves-light velvet-red tool-btn" data-format="h2" title="Heading">
+                                        <i class="fas fa-heading"></i>
+                                    </button>
+                                    <button class="btn-floating btn-small waves-effect waves-light velvet-red tool-btn" data-format="quote" title="Quote">
+                                        <i class="fas fa-quote-right"></i>
+                                    </button>
+                                    <button class="btn-floating btn-small waves-effect waves-light velvet-red tool-btn" data-format="list-ul" title="Bullet List">
+                                        <i class="fas fa-list-ul"></i>
+                                    </button>
+                                    <button class="btn-floating btn-small waves-effect waves-light velvet-red tool-btn" data-format="list-ol" title="Numbered List">
+                                        <i class="fas fa-list-ol"></i>
+                                    </button>
+                                    <span class="divider-vertical"></span>
+                                    <button class="btn-floating btn-small waves-effect waves-light velvet-red tool-btn" data-format="link" title="Insert Link">
+                                        <i class="fas fa-link"></i>
+                                    </button>
+                                    <button class="btn-floating btn-small waves-effect waves-light velvet-red tool-btn" data-format="image" title="Insert Image">
+                                        <i class="fas fa-image"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Text Editor Area -->
+                    <div class="editor-container">
+                        <textarea id="fullTextEditor" class="full-text-editor" placeholder="Write your article content here..."></textarea>
+                    </div>
+                    
+                    <!-- Word Count Progress -->
+                    <div class="word-count-progress">
+                        <div class="progress grey lighten-2">
+                            <div id="wordCountProgress" class="determinate velvet-red" style="width: 0%"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col s6">
+                                <span class="word-count-detail">
+                                    <i class="fas fa-font"></i> <span id="charCount">0</span> characters
+                                </span>
+                            </div>
+                            <div class="col s6 right-align">
+                                <span class="word-count-detail">
+                                    <i class="fas fa-clock"></i> ~<span id="readingTime">0</span> min read
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Templates -->
+                    <div class="quick-templates">
+                        <span class="templates-label">Quick Templates:</span>
+                        <button class="btn-flat template-btn" data-template="news">📰 News Article</button>
+                        <button class="btn-flat template-btn" data-template="opinion">💭 Opinion Piece</button>
+                        <button class="btn-flat template-btn" data-template="interview">🎤 Interview</button>
+                        <button class="btn-flat template-btn" data-template="review">⭐ Review</button>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <div class="row" style="margin-bottom: 0; width: 100%;">
+                        <div class="col s6 left-align">
+                            <button class="btn-flat waves-effect" id="clearEditorBtn">
+                                <i class="fas fa-trash left"></i>Clear
+                            </button>
+                            <button class="btn-flat waves-effect" id="previewEditorBtn">
+                                <i class="fas fa-eye left"></i>Preview
+                            </button>
+                        </div>
+                        <div class="col s6 right-align">
+                            <button class="btn-flat waves-effect modal-close">
+                                <i class="fas fa-times left"></i>Cancel
+                            </button>
+                            <button class="btn velvet-red waves-effect waves-light" id="saveEditorBtn">
+                                <i class="fas fa-check left"></i>Insert to Article
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Modal for Editor -->
+            <div id="editorPreviewModal" class="modal">
+                <div class="modal-content">
+                    <h5 class="velvet-red-text">Content Preview</h5>
+                    <div class="divider velvet-red"></div>
+                    <div id="editorPreviewContent" class="preview-content-box"></div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close btn-flat">Close</a>
+                </div>
+            </div>
+
+
+
+    <!-- Scripts -->
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/materialize.min.js"></script>
+    <!-- html2canvas for image download -->
+    <script src="scripts/html2canvas.min.js"></script>
+    <!-- jspdf for PDF download -->
+    <script src="scripts/jspdf.umd.min.js"></script>
+    <!-- Article Storage & Persistence -->
+     <script src="scripts/article-storage.js"></script>
+    <!-- Custom JS -->
+    <script src="scripts/create-article.js"></script>
+    <script>
+    // Check if we're in edit mode
+    $(document).ready(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const editId = urlParams.get('edit');
+        
+        if (editId) {
+            loadArticleForEdit(editId);
+        }
+        
+        function loadArticleForEdit(id) {
+            const article = ArticleStorage.get(id);
+            
+            if (article) {
+                // Populate form fields
+                $('#articleTitle').val(article.title);
+                $('#articleSubtitle').val(article.subtitle);
+                $('#articleAuthor').val(article.author);
+                $('#articleDate').val(article.date);
+                $('#articleLayout').val(article.layout);
+                $('#articleContent').val(article.fullContent || article.remainingText);
+                
+                // Set image if exists
+                if (article.image) {
+                    currentImage = article.image;
+                    $('#imagePreview img').attr('src', article.image);
+                    $('#imagePreview').show();
+                }
+                
+                // Set styling options
+                if (article.styling) {
+                    $('#fontFamily').val(article.styling.fontFamily);
+                    // ... set other styling options
+                }
+                
+                // Trigger change events to update Materialize components
+                $('select').trigger('change');
+                M.updateTextFields();
+                
+                // Generate preview
+                $('#articleForm').submit();
+                
+                M.toast({html: 'Article loaded for editing', classes: 'blue'});
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>
+
+
