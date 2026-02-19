@@ -1,0 +1,233 @@
+/* styles/created-articles.css */
+
+:root {
+    --velvet-red: #8B0000;
+    --velvet-red-light: #a52a2a;
+    --velvet-red-dark: #660000;
+    --accent-gold: #D4AF37;
+}
+
+body {
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+nav.velvet-red {
+    background-color: var(--velvet-red) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav .brand-logo {
+    font-family: "Times New Roman", serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.container {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.page-header {
+    margin-bottom: 25px;
+}
+
+.page-header h4 {
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
+
+.divider.velvet-red {
+    background-color: var(--velvet-red);
+    height: 3px;
+    width: 80px;
+}
+
+/* Storage Stats */
+.storage-stats {
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--velvet-red);
+    line-height: 1.2;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Article Cards */
+.article-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.card-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background: #f0f0f0;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--velvet-red);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card-content {
+    padding: 20px;
+    flex: 1;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+    color: #333;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+    font-style: italic;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.card-meta i {
+    color: var(--velvet-red);
+    margin-right: 4px;
+    width: 16px;
+}
+
+.card-excerpt {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-actions {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-around;
+    background: #fafafa;
+}
+
+.card-actions .btn-flat {
+    padding: 0 10px;
+    font-size: 0.8rem;
+}
+
+.card-actions .btn-flat i {
+    margin-right: 5px;
+}
+
+.card-actions .btn-flat:hover {
+    background: rgba(139, 0, 0, 0.05);
+}
+
+/* Empty State */
+#emptyState {
+    padding: 60px 20px;
+}
+
+#emptyState i {
+    color: var(--velvet-red-light);
+    margin-bottom: 20px;
+}
+
+#emptyState h5 {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Modal Styles */
+.modal .modal-content {
+    padding: 24px;
+}
+
+.modal .modal-footer {
+    padding: 4px 8px;
+}
+
+.article-preview {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .stat-value {
+        font-size: 1.4rem;
+    }
+    
+    .card-actions {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .card-actions .btn-flat {
+        flex: 1;
+        text-align: center;
+    }
+}
